@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho</title>
+</head>
+<body>
+    <header>
+        <h1>Carrinho de Compras</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/roupas">Roupas</a></li>
+                <li><a href="/carrinho">Carrinho</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Itens no Carrinho</h2>
+        <ul>
+            {% for produto in produtos %}
+                <li>
+                    <img src="{{ url_for('static', filename='img/' + produto['imagem']) }}" alt="{{ produto['nome'] }}" width="100">
+                    <h3>{{ produto['nome'] }}</h3>
+                    <p>R$ {{ produto['valor_prod'] }}</p>
+                    <p>Quantidade: {{ produto['quantidade'] }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Elephant Store</p>
+    </footer>
+</body>
+</html>
